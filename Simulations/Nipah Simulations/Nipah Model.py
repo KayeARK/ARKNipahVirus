@@ -11,7 +11,7 @@ ifmat=[]
 deadmat=[]
 
 
-for i in range(1000):
+for i in range(10000):
     
     a=0
     
@@ -22,7 +22,7 @@ for i in range(1000):
 
         t=50  
 
-        data = np.loadtxt('Faridpur2004ABCdata.dat')
+        data = np.loadtxt('C:\\Users\\Alex\\Desktop\\URSS Project\\Models\\Parameter Results\\Individual Outbreak Data\\Faridpur2004ABCdata.dat')
 
         betamat=data[:,98]
         epsilonmat=data[:,99]
