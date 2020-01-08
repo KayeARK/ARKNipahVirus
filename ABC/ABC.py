@@ -93,7 +93,7 @@ def SEIR(t, N, beta, epsilon, sigma, mu1, mu2, E, seasonstart, seasonend):
             R = R - 1
 
 
-#df = pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\Datasets.xlsx', sheet_name='Faridpur2004')
+#df = pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\GitHub\Datasets.xlsx', sheet_name='Faridpur2004')
 '''
 data=[]
 betamat=[]
@@ -343,7 +343,7 @@ np.savetxt('Faridpur2004ABCdata.dat', data)
 
 
 
-#df = pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\Datasets.xlsx', sheet_name='Tangail2005')
+#df = pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\GitHub\Datasets.xlsx', sheet_name='Tangail2005')
 '''
 data=[]
 betamat=[]
@@ -589,7 +589,7 @@ np.savetxt('Tangail2005ABCdata.dat', data)
 
 
 
-#df = pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\Datasets.xlsx', sheet_name='Thakurgaon2007')
+#df = pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\GitHub\Datasets.xlsx', sheet_name='Thakurgaon2007')
 '''
 data=[]
 betamat=[]
@@ -839,8 +839,8 @@ np.savetxt('Thakurgaon2007ABCdata.dat', data)
 
 
 
-df = pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\Datasets.xlsx', sheet_name='Manikgonj2008')
-
+#df = pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\GitHub\Datasets.xlsx', sheet_name='Manikgonj2008')
+'''
 data=[]
 betamat=[]
 epsilonmat=[]
@@ -1078,6 +1078,7 @@ for f in range(14):#1:
     
 data=np.column_stack(data)
 np.savetxt('Manikgonj2008ABCdata.dat', data)
+'''
 
 
 
@@ -1085,9 +1086,8 @@ np.savetxt('Manikgonj2008ABCdata.dat', data)
 
 
 
-
-df = pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\Datasets.xlsx', sheet_name='Rajbari2008')
-
+#df = pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\GitHub\Datasets.xlsx', sheet_name='Rajbari2008')
+'''
 data=[]
 betamat=[]
 epsilonmat=[]
@@ -1325,6 +1325,7 @@ for f in range(14):#2:
     
 data=np.column_stack(data)
 np.savetxt('Rajbari2008ABCdata.dat', data)
+'''
 
 
 
@@ -1332,9 +1333,8 @@ np.savetxt('Rajbari2008ABCdata.dat', data)
 
 
 
-
-df = pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\Datasets.xlsx', sheet_name='Faridpur2010')
-
+#df = pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\GitHub\Datasets.xlsx', sheet_name='Faridpur2010')
+'''
 data=[]
 betamat=[]
 epsilonmat=[]
@@ -1572,6 +1572,7 @@ for f in range(14):#21:
     
 data=np.column_stack(data)
 np.savetxt('Faridpur2010ABCdata.dat', data)
+'''
 
 
 
@@ -1585,8 +1586,8 @@ np.savetxt('Faridpur2010ABCdata.dat', data)
 
 
 
-
-df = pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\Datasets.xlsx', sheet_name='Rangpur2011')
+#df = pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\GitHub\Datasets.xlsx', sheet_name='Rangpur2011')
+'''
 data=[]
 betamat=[]
 epsilonmat=[]
@@ -1824,6 +1825,7 @@ for f in range(14):#5:
     
 data=np.column_stack(data)
 np.savetxt('Rangpur2011ABCdata.dat', data)
+'''
 
 
 
@@ -1833,8 +1835,8 @@ np.savetxt('Rangpur2011ABCdata.dat', data)
 
 
 
-
-df = pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\Datasets.xlsx', sheet_name='Joypurhat2012')
+#df = pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\GitHub\Datasets.xlsx', sheet_name='Joypurhat2012')
+'''
 data=[]
 betamat=[]
 epsilonmat=[]
@@ -2072,6 +2074,7 @@ for f in range(14):#5:
     
 data=np.column_stack(data)
 np.savetxt('Joypurhat2012ABCdata.dat', data)
+'''
 
 
 
@@ -2080,8 +2083,8 @@ np.savetxt('Joypurhat2012ABCdata.dat', data)
 
 
 
-
-df = pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\Datasets.xlsx', sheet_name='Rajshiahi2012')
+#df = pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\GitHub\Datasets.xlsx', sheet_name='Rajshiahi2012')
+'''
 data=[]
 betamat=[]
 epsilonmat=[]
@@ -2319,6 +2322,7 @@ for f in range(14):#2:
     
 data=np.column_stack(data)
 np.savetxt('Rajshiahi2012ABCdata.dat', data)
+'''
 
 
 
@@ -2329,8 +2333,8 @@ np.savetxt('Rajshiahi2012ABCdata.dat', data)
 
 
 
-
-df = pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\Datasets.xlsx', sheet_name='Faridpur2014')
+#df = pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\GitHub\Datasets.xlsx', sheet_name='Faridpur2014')
+'''
 data=[]
 betamat=[]
 epsilonmat=[]
@@ -2569,14 +2573,14 @@ for f in range(14):#3:
 data=np.column_stack(data)
 np.savetxt('Faridpur2014ABCdata.dat', data)
 
+'''
 
 
 
 
 
 
-
-df = pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\Datasets.xlsx', sheet_name='Rangpur2014')
+df = pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\GitHub\Datasets.xlsx', sheet_name='Rangpur2014')
 data=[]
 betamat=[]
 epsilonmat=[]

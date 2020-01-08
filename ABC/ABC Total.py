@@ -132,59 +132,61 @@ particles=200 #number of parameters sampled at each iteration
 iterations=15
 
 data=[] #data storage array
-df1=pd.read_excel (r'C:\Users\alexr\Desktop\URSS Project\Datasets.xlsx', sheet_name='Faridpur2004')
-df2=pd.read_excel (r'C:\Users\alexr\Desktop\URSS Project\Datasets.xlsx', sheet_name='Tangail2005')
-df3=pd.read_excel (r'C:\Users\alexr\Desktop\URSS Project\Datasets.xlsx', sheet_name='Thakurgaon2007')
-df4=pd.read_excel (r'C:\Users\alexr\Desktop\URSS Project\Datasets.xlsx', sheet_name='Manikgonj2008')    
-df5=pd.read_excel (r'C:\Users\alexr\Desktop\URSS Project\Datasets.xlsx', sheet_name='Rajbari2008')
-df6=pd.read_excel (r'C:\Users\alexr\Desktop\URSS Project\Datasets.xlsx', sheet_name='Faridpur2010')
-df7=pd.read_excel (r'C:\Users\alexr\Desktop\URSS Project\Datasets.xlsx', sheet_name='Rangpur2011')   
-df8=pd.read_excel (r'C:\Users\alexr\Desktop\URSS Project\Datasets.xlsx', sheet_name='Joypurhat2012')
-df9=pd.read_excel (r'C:\Users\alexr\Desktop\URSS Project\Datasets.xlsx', sheet_name='Rajshiahi2012')
-df10=pd.read_excel (r'C:\Users\alexr\Desktop\URSS Project\Datasets.xlsx', sheet_name='Faridpur2014')
-df11=pd.read_excel (r'C:\Users\alexr\Desktop\URSS Project\Datasets.xlsx', sheet_name='Rangpur2014')
+df1=pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\GitHub\Datasets.xlsx', sheet_name='Faridpur2004')
+#df2=pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\GitHub\Datasets.xlsx', sheet_name='Tangail2005')
+df3=pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\GitHub\Datasets.xlsx', sheet_name='Thakurgaon2007')
+#df4=pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\GitHub\Datasets.xlsx', sheet_name='Manikgonj2008')    
+#df5=pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\GitHub\Datasets.xlsx', sheet_name='Rajbari2008')
+df6=pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\GitHub\Datasets.xlsx', sheet_name='Faridpur2010')
+df7=pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\GitHub\Datasets.xlsx', sheet_name='Rangpur2011')   
+#df8=pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\GitHub\Datasets.xlsx', sheet_name='Joypurhat2012')
+df9=pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\GitHub\Datasets.xlsx', sheet_name='Rajshiahi2012')
+df10=pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\GitHub\Datasets.xlsx', sheet_name='Faridpur2014')
+df11=pd.read_excel (r'C:\Users\Alex\Desktop\URSS Project\GitHub\Datasets.xlsx', sheet_name='Rangpur2014')
 
 
 #this is where parameters are picked, [a,b] is a uniform distribution from a to b inclusive.
-betamatABC=[0,100]
-epsilonmatABC=[0,0.01]
+betamatABC=[0,0.04]
+epsilonmatABC=[0,0.00075]
 sigmamatABC=[0,0.25]
-seasonendmatABC=[250, 364]
+seasonendmatABC=[360, 365]
 seasonstartmatABC=[0,150]
 N=1500
 mu2=1/16
 E1matABC=list(np.arange(37)) #as 36 infections in Faridpur 2004
-E2matABC=list(np.arange(12)) #as 11 infections in...
+#E2matABC=list(np.arange(12)) #as 11 infections in...
 E3matABC=list(np.arange(8))
-E4matABC=list(np.arange(5))
-E5matABC=list(np.arange(7))
+#E4matABC=list(np.arange(5))
+#E5matABC=list(np.arange(7))
 E6matABC=list(np.arange(18))
 E7matABC=list(np.arange(8))
-E8matABC=list(np.arange(13))
+#E8matABC=list(np.arange(13))
 E9matABC=list(np.arange(4))
 E10matABC=list(np.arange(6))
 E11matABC=list(np.arange(5))
 
-msemat_=[119, 28, 11, 2, 8, 91, 22, 15, 5, 7, 5] #matrix for initial accepted errors
+#msemat_=[119, 28, 11, 2, 8, 91, 22, 15, 5, 7, 5] matrix for initial accepted errors
+
+msemat_=[119, 11, 91, 22, 5, 7, 5]
 
 for g in range(iterations):
         
     E1mat=[]
     msemat1=[]
-    E2mat=[]
-    msemat2=[]
+    #E2mat=[]
+    #msemat2=[]
     E3mat=[]
     msemat3=[]
-    E4mat=[]
-    msemat4=[]
-    E5mat=[]
-    msemat5=[]
+    #E4mat=[]
+    #msemat4=[]
+    #E5mat=[]
+    #msemat5=[]
     E6mat=[]
     msemat6=[]
     E7mat=[]
     msemat7=[]
-    E8mat=[]
-    msemat8=[]
+    #E8mat=[]
+    #msemat8=[]
     E9mat=[]
     msemat9=[]
     E10mat=[]
@@ -256,12 +258,12 @@ for g in range(iterations):
             mse1=caseserror
             print(mse1)
             
-            days(df2)
-            mu1=((1/16)/(10/11))-(1/16)    
-            E2=random.choice(E2matABC)            
-            SEIR(N, beta, epsilon, sigma, mu1, mu2, E2, seasonstart, seasonend, idays)
-            error(itaumat, cumifmat, idays, cases)
-            mse2=caseserror
+            #days(df2)
+            #mu1=((1/16)/(10/11))-(1/16)    
+            #E2=random.choice(E2matABC)            
+            #SEIR(N, beta, epsilon, sigma, mu1, mu2, E2, seasonstart, seasonend, idays)
+            #error(itaumat, cumifmat, idays, cases)
+            #mse2=caseserror
             
             days(df3)
             mu1=((1/16)/(3/7))-(1/16)    
@@ -270,19 +272,19 @@ for g in range(iterations):
             error(itaumat, cumifmat, idays, cases)
             mse3=caseserror
             
-            days(df4)
-            mu1=((1/16)/(3/4))-(1/16)    
-            E4=random.choice(E4matABC)            
-            SEIR(N, beta, epsilon, sigma, mu1, mu2, E4, seasonstart, seasonend, idays)
-            error(itaumat, cumifmat, idays, cases)
-            mse4=caseserror
+            #days(df4)
+            #mu1=((1/16)/(3/4))-(1/16)    
+            #E4=random.choice(E4matABC)            
+            #SEIR(N, beta, epsilon, sigma, mu1, mu2, E4, seasonstart, seasonend, idays)
+            #error(itaumat, cumifmat, idays, cases)
+            #mse4=caseserror
             
-            days(df5)
-            mu1=((1/16)/(3/4))-(1/16)    
-            E5=random.choice(E5matABC)            
-            SEIR(N, beta, epsilon, sigma, mu1, mu2, E5, seasonstart, seasonend, idays)
-            error(itaumat, cumifmat, idays, cases)
-            mse5=caseserror
+            #days(df5)
+            #mu1=((1/16)/(3/4))-(1/16)    
+            #E5=random.choice(E5matABC)            
+            #SEIR(N, beta, epsilon, sigma, mu1, mu2, E5, seasonstart, seasonend, idays)
+            #error(itaumat, cumifmat, idays, cases)
+            #mse5=caseserror
             
             days(df6)
             mu1=((1/16)/(3/4))-(1/16)    
@@ -298,12 +300,12 @@ for g in range(iterations):
             error(itaumat, cumifmat, idays, cases)
             mse7=caseserror
             
-            days(df8)
-            mu1=((1/16)/(10/12))-(1/16)    
-            E8=random.choice(E8matABC)            
-            SEIR(N, beta, epsilon, sigma, mu1, mu2, E8, seasonstart, seasonend, idays)
-            error(itaumat, cumifmat, idays, cases)
-            mse8=caseserror
+            #days(df8)
+            #mu1=((1/16)/(10/12))-(1/16)    
+            #E8=random.choice(E8matABC)            
+            #SEIR(N, beta, epsilon, sigma, mu1, mu2, E8, seasonstart, seasonend, idays)
+            #error(itaumat, cumifmat, idays, cases)
+            #mse8=caseserror
             
             days(df9)
             mu1=((1/16)/(3/4))-(1/16)    
@@ -326,7 +328,7 @@ for g in range(iterations):
             error(itaumat, cumifmat, idays, cases)
             mse11=caseserror
             
-            if mse1<msemat_[0] and mse2<msemat_[1] and mse3<msemat_[2] and mse4<msemat_[3] and mse5<msemat_[4] and mse6<msemat_[5] and mse7<msemat_[6] and mse8<msemat_[7] and mse9<msemat_[8] and mse10<msemat_[9] and mse11<msemat_[10]:
+            if mse1<msemat_[0] and mse3<msemat_[2] and mse6<msemat_[5] and mse7<msemat_[6] and mse9<msemat_[8] and mse10<msemat_[9] and mse11<msemat_[10]:
                 i=i+1
                 betamat.append(list(beta)[0])
                 epsilonmat.append(list(epsilon)[0])
@@ -335,20 +337,20 @@ for g in range(iterations):
                 seasonendmat.append(list(seasonend)[0])
                 E1mat.append(E1)
                 msemat1.append(mse1)
-                E2mat.append(E2)
-                msemat2.append(mse2)
+                #E2mat.append(E2)
+                #msemat2.append(mse2)
                 E3mat.append(E3)
                 msemat3.append(mse3)
-                E4mat.append(E4)
-                msemat4.append(mse4)
-                E5mat.append(E5)
-                msemat5.append(mse5)
+                #E4mat.append(E4)
+                #msemat4.append(mse4)
+                #E5mat.append(E5)
+                #msemat5.append(mse5)
                 E6mat.append(E6)
                 msemat6.append(mse6)
                 E7mat.append(E7)
                 msemat7.append(mse7)
-                E8mat.append(E8)
-                msemat8.append(mse8)
+                #E8mat.append(E8)
+                #msemat8.append(mse8)
                 E9mat.append(E9)
                 msemat9.append(mse9)
                 E10mat.append(E10)
@@ -368,17 +370,17 @@ for g in range(iterations):
         seasonstartmatABC=seasonstartmat
         seasonendmatABC=seasonendmat
         E1matABC=E1mat
-        E2matABC=E2mat
+        #E2matABC=E2mat
         E3matABC=E3mat
-        E4matABC=E4mat
-        E5matABC=E5mat
+        #E4matABC=E4mat
+        #E5matABC=E5mat
         E6matABC=E6mat
         E7matABC=E7mat
-        E8matABC=E8mat
+        #E8matABC=E8mat
         E9matABC=E9mat
         E10matABC=E10mat
         E11matABC=E11mat
-        msemat_=[np.median(msemat1), np.median(msemat2), np.median(msemat3), np.median(msemat4), np.median(msemat5), np.median(msemat6), np.median(msemat7), np.median(msemat8), np.median(msemat9), np.median(msemat10), np.median(msemat11)]
+        msemat_=[np.median(msemat1), np.median(msemat3), np.median(msemat6), np.median(msemat7), np.median(msemat9), np.median(msemat10), np.median(msemat11)]
 
         data.append(betamat)
         data.append(epsilonmat)
@@ -387,20 +389,20 @@ for g in range(iterations):
         data.append(seasonendmat)
         data.append(E1mat)
         data.append(msemat1)
-        data.append(E2mat)
-        data.append(msemat2)
+        #data.append(E2mat)
+        #data.append(msemat2)
         data.append(E3mat)
         data.append(msemat3)
-        data.append(E4mat)
-        data.append(msemat4)
-        data.append(E5mat)
-        data.append(msemat5)
+        #data.append(E4mat)
+        #data.append(msemat4)
+        #data.append(E5mat)
+        #data.append(msemat5)
         data.append(E6mat)
         data.append(msemat6)
         data.append(E7mat)
         data.append(msemat7)
-        data.append(E8mat)
-        data.append(msemat8)
+        #data.append(E8mat)
+        #data.append(msemat8)
         data.append(E9mat)
         data.append(msemat9)
         data.append(E10mat)
@@ -415,20 +417,20 @@ for g in range(iterations):
         print(seasonendmat)
         print(msemat1)
         print(E1mat)
-        print(msemat2)
-        print(E2mat)
+        #print(msemat2)
+        #print(E2mat)
         print(msemat3)
         print(E3mat)
-        print(msemat4)
-        print(E4mat)
-        print(msemat5)
-        print(E5mat)
+        #print(msemat4)
+        #print(E4mat)
+        #print(msemat5)
+        #print(E5mat)
         print(msemat6)
         print(E6mat)
         print(msemat7)
         print(E7mat)
-        print(msemat8)
-        print(E8mat)
+        #print(msemat8)
+        #print(E8mat)
         print(msemat9)
         print(E9mat)
         print(msemat10)
