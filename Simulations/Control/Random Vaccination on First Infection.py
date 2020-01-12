@@ -6,8 +6,11 @@ import numpy as np
 from matplotlib.lines import Line2D
 from statistics import mode
 
-data = np.loadtxt('C:\\Users\\Alex\\Desktop\\URSS Project\\Models\\Parameter Results\\Individual Outbreak Data\\Faridpur2004ABCdata.dat')
+#loads file with each iteration of ABC data
+data = np.loadtxt('C:\\Users\\Alex\\Desktop\\URSS Project\\GitHub\\Parameter Results\\Individual Outbreak Data Sets\\Faridpur2004ABCdata.dat')
 
+
+#puts the "best" (last) batch of ABC data into arrays
 betamat=data[:,98]
 epsilonmat=data[:,99]
 sigmamat=data[:,100]
@@ -16,13 +19,12 @@ seasonendmat=data[:,102]
 msemat=data[:,103]
 Emat=data[:,104]
 
-
 p=-0.04
 pmat=[]
 avgiftmattotal=[]
 modeiftmattotal=[]
 
-for l in range(26):
+for l in range(26): #runs algorithm for increasing vaccine efficacy
     
     p=p+0.04
     pmat.append(p)
@@ -34,7 +36,7 @@ for l in range(26):
 
     gamma = -4
 
-    for f in range(26):
+    for f in range(26): #runs algorithm for increasing number of people vaccinated per day 
         
         ifbmat=[]
         ifhmat=[]
@@ -43,14 +45,15 @@ for l in range(26):
         gammamat.append(gamma)
         print(gamma)
 
-        for i in range(200):
+        for i in range(200): #runs simulation 200 times for each value of gamma and p (might be worth increasing to 500/1000)
             
             N=1500 #population of village
             T=500 #elapsed time
 
-            t=50  
-        
-                
+            t=50        
+             
+            #the following generates distributions for each parameter from which parameter values are picked at random in the control simulation
+            
             histbeta,binsbeta = np.histogram(betamat)
             bin_midpointsbeta = binsbeta[:-1]+np.diff(binsbeta)/2
             cdfbeta=np.cumsum(histbeta)
@@ -93,16 +96,16 @@ for l in range(26):
 
 
 
-
-            mu1=((1/16)/(7/9))-(1/16)
-            mu2=1/16
+            Vnumber=1500 #the total number of vaccines available to use
+            mu1=((1/16)/(7/9))-(1/16) #recovery rate
+            mu2=1/16 #death rate due to disease
             mu=1/(365*67) #natural birth and death rate
             E=random.choice(Emat) #intial number of infected individuals
             S=N-E #number of susceptibles
             I=1 #number of exposed
             R=0 #number of dead
-            VF=0
-            VS=0
+            VF=0 #intital number of failed vaccinations
+            VS=0 #intital number of sucessful vaccinations
             inputSEIVR = [S, E, I, VF, VS, R]
 
             SEIVR = []
@@ -120,6 +123,12 @@ for l in range(26):
                                
                 else:
                     _epsilon=epsilon
+                    
+                if Vnumber<1:
+                    _gamma=0
+                    
+                else:
+                    _gamma=gamma
                 
                 if I==0 and E==0 and _epsilon==0:
                     break
@@ -129,8 +138,8 @@ for l in range(26):
                     vsr=0
                     
                 else:
-                    vfr=((1 - p) * gamma * S)/(S + E)
-                    vsr=(p * gamma * S)/(S + E)
+                    vfr=((1 - p) * _gamma * S)/(S + E)
+                    vsr=(p * _gamma * S)/(S + E)
 
                                          
                 N = S + E + I + VF + VS + R
@@ -210,10 +219,12 @@ for l in range(26):
                 elif sum(ratemat [:13])/ratetotal < r and r < sum(ratemat [:14])/ratetotal:
                     S = S - 1
                     VF = VF + 1
+                    Vnumber=Vnumber-1
                     
                 else:
                     S = S - 1
-                    VS = VS + 1                
+                    VS = VS + 1
+                    Vnumber=Vnumber-1
 
                             
                 SEIVR.append([t, S, E, I, VF, VS, R]) #adds data to SIR matrix
@@ -227,7 +238,9 @@ for l in range(26):
 
     avgiftmattotal.append(avgiftmat)
     modeiftmattotal.append(modeiftmat)
-    
+
+
+#prints data, might be best to save it wherever is fit
 print("Mean Infection Data:", avgiftmattotal)
 print("Mode Infection Data:", modeiftmattotal)
 print("p Values:", pmat)
